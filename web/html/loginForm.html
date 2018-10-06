@@ -1,0 +1,165 @@
+<style type="text/css">
+#formControllerDiv {
+	margin-left: 30%;
+	height: 360px;
+	margin-bottom: 1%;
+	border-radius: 10px;
+	margin-top: 0.5%;
+	width: 35%;
+}
+
+#loginBtn {
+	margin-left: 31%;
+}
+
+#loginImg {
+	margin-left: 36%;
+	height: 81px;
+}
+
+.loginCredentialsDiv {
+	margin-left: 15%;
+	margin-top: 15px;
+	width: 70%;
+}
+
+@media only screen and (max-width: 900px) {
+	#formControllerDiv {
+		margin-left: 15%;
+		width: 70%;
+	}
+	#loginBtn {
+		margin-left: 35%;
+	}
+	#loginImg {
+		margin-left: 36%;
+	}
+	.loginCredentialsDiv {
+		width: 60%;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	#loginBtn {
+		margin-left: 6%;
+	}
+	.loginCredentialsDiv {
+		width: 100%;
+		margin-left: 0px;
+	}
+}
+
+.glyphicon-refresh-animate {
+	-animation: spin .7s infinite linear;
+	-ms-animation: spin .7s infinite linear;
+	-webkit-animation: spinw .7s infinite linear;
+	-moz-animation: spinm .7s infinite linear;
+}
+
+@
+keyframes spin {from { transform:scale(1)rotate(0deg);
+	
+}
+
+to {
+	transform: scale(1) rotate(360deg);
+}
+
+}
+@
+-webkit-keyframes spinw {from { -webkit-transform:rotate(0deg);
+	
+}
+
+to {
+	-webkit-transform: rotate(360deg);
+}
+
+}
+@
+-moz-keyframes spinm {from { -moz-transform:rotate(0deg);
+	
+}
+
+to {
+	-moz-transform: rotate(360deg);
+}
+
+}
+#glyphiconid {
+	font-size: large;
+	margin-left: 3%;
+}
+</style>
+<div class="panel panel-success" id="formControllerDiv"
+	data-ng-controller="FormController as formController">
+	<div class="panel-heading">
+		<label id="panelHeader">Login</label>
+	</div>
+	<div class="panel-body" style="margin-left: 10%; margin-right: 10%">
+		<form id="loginForm">
+			<div>
+				<img class="profile-img" src="/andromeda/images/login/loginImg.jpg"
+					alt="No image" id="loginImg">
+				<div class="form-group row input-group loginCredentialsDiv" style="">
+					<span class="input-group-addon">
+					<li	class="glyphicon glyphicon-user"></li></span> 
+					<input type="text" class="form-control" id="username" placeholder="Enter username"
+						data-ng-model="lgdata.object.userName">
+				</div>
+				<div class="form-group row input-group loginCredentialsDiv">
+					<span class="input-group-addon"><li
+						class="glyphicon glyphicon-lock"></li></span><input type="password"
+						class="form-control" placeholder="Enter password"
+						data-ng-model="lgdata.object.password" id="pwdId">
+				</div>
+				<button type="button" class="btn btn-success" id="loginBtn"
+					data-ng-click="login(lgdata.object);">Sign in</button>
+				<span id="glyphiconid"
+					class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+				<a class="cursor-pointer" data-toggle="modal" data-target="#myModal"
+					style="margin-left: 3%;">Forgot password</a>
+			</div>
+			<div id="errorDiv" style="margin-top: 5px;"></div>
+		</form>
+	</div>
+
+	<!-- <div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			Modal content
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Forgot password</h4>
+				</div>
+				<div class="modal-body">
+					Enter username: <input placeholder="xxxxxx@gmail.com"
+						data-ng-model="email" required="required"
+						pattern="^[A-Za-z0-9.$]*[@][a-z]{3,8}.(com|gov|org|office|co.in|edu|in)"
+						class="form-control" />
+				</div>
+				<div class="modal-footer">
+					<button id="submit" type="button" class="btn btn-primary"
+						data-ng-click="forgotPassword(email);">Submit</button>
+					&nbsp;&nbsp;<span id="spinner"></span>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</div>
+<script>
+	jQuery(document).ready(function() {
+		angular.bootstrap(jQuery("#formControllerDiv"), [ 'formModule' ]);
+		$("#pwdId").keyup(function(event) {
+			if (event.keyCode == 13) {
+				$("#loginBtn").click();
+			}
+		});
+		$("#glyphiconid").hide();
+	});
+	jQuery("#submit").click(function() {
+		jQuery("#spinner").addClass("glyphicon glyphicon-refresh glyphicon-refresh-animate");
+	});
+</script>

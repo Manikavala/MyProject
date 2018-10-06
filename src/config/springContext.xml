@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/amdds" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
+	</bean>
+
+	<!-- <context:annotation-config> declares support for general annotations 
+		such as @Required, @Autowired, @PostConstruct, and so on.
+		 
+		<mvc:annotation-driven /> declares explicit support for annotation-driven MVC controllers (i.e. 
+		@RequestMapping, @Controller, although support for those is the default behavior), 
+		as well as adding support for declarative validation via @Valid and message 
+		body marshaling with @RequestBody/ResponseBody -->
+
+	<bean id="LoginDAO" class=" myproject.data.DAO.LoginDAO"></bean>
+	<bean id="RegisterDAO" class=" myproject.data.DAO.RegisterDAO"></bean>
+	<bean id="ReportDAO" class=" myproject.data.DAO.ReportDAO"></bean>
+	<bean id="FeedbacktDAO" class=" myproject.data.DAO.FeedbackDAO"></bean>
+	
+	<context:component-scan base-package="myproject.data" />
+	<mvc:annotation-driven />    <!--we can use @EnableWebMVC -->
+</beans>

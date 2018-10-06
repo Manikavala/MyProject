@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Register">
+	
+	<insert id="Reg" parameterType="map">
+		INSERT INTO apssdc.regitration(username, guardianname, mobilenumber, email, gender, address)
+		VALUES(#{p.username}, #{p.guardianName}, #{p.mobileNumber}, #{p.email}, #{p.gender}, #{p.address});
+	</insert>
+
+	<select id="getAllUsers" resultType="RegisterModel">
+		SELECT username , guardianname as guardianName, mobilenumber as
+		mobileNumber,email,gender,address FROM apssdc.regitration;
+	</select>
+	
+	<!-- register updates   Database=#{p.model}   -->
+	<update id="updateRegData" parameterType="map">
+		UPDATE apssdc.regitration SET guardianname=#{p.guardianName}, mobilenumber=#{p.mobileNumber}, email=#{p.email}, gender=#{p.gender}, address=#{p.address} WHERE username=#{p.username}
+	</update>
+	
+	<delete id="deleteRegData" parameterType="java.lang.String">
+	delete from apssdc.regitration where username = #{username};
+	</delete>
+	
+</mapper>

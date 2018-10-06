@@ -1,0 +1,85 @@
+<div id="loginDiv" data-ng-controller="LoginController">
+
+	<form id="loginform">
+
+		<label for="name">Name:</label> <input type="text" id="name" data-ng-model="lgdata.object.userName"> 
+		<label for="mail">Password:</label> <input type="password" id="password"data-ng-model="lgdata.object.password">
+		<button data-ng-click="login(lgdata.object)">Login</button>
+
+		<table class="table table-bordered" >
+			<tr style='background-color: #cdcdff'>
+				<th>S.No</th>
+				<th>Name</th>
+				<th>Password</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr data-ng-repeat="x in indiData" >
+				<td>{{ $index + 1 }}</td>
+				<td>{{ x.userName }}</td>
+				<td>{{ x.password }}</td>
+				<td>&nbsp;&nbsp;&nbsp;
+					<button type="button" data-ng-click=updateById(x) id="update"
+						class="btn btn-success btn-md" data-toggle="modal"
+						data-target="#myModal">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>&nbsp;&nbsp;&nbsp;
+				</td>
+				<td><button type="button" data-ng-click="remove(x.userName)"
+						id="delete" class="btn btn-danger">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button></td>
+			</tr>
+		</table>
+	</form>
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title" style="margin-left: 370px;">Update
+						Form</h4>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-success">
+						<div class="panel-body">
+							<form>
+								<br> <label class="control-label col-md-2">Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control"
+										data-ng-model="data.object.userName">
+								</div>
+								<label class="control-label col-md-2">Password:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control"
+										data-ng-model="data.object.password">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="updatedata" class="btn btn-primary"
+						data-ng-click="updateData(data.object)" data-dismiss="modal"
+						style="width: 100px">Update</button>
+					<!-- <button type="button" id="add" class="btn btn-primary" data-ng-click="registration(data.object);" data-dismiss="modal" style="width: 100px">Register</button>
+<button type="button" class="btn btn-warning" style="margin-right: 70px; width: 100px" data-dismiss="modal">Close</button>
+ -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	jQuery(document).ready(function() {
+		angular.bootstrap(jQuery("#loginDiv"), [ 'loginModule' ]);
+	});
+	/* jQuery(document).on('click', "#update", function() {
+		$("#updatedata").show();
+		//	$("#add").hide();
+	}); */
+	$("#update").click(function() {
+		$('body').removeClass('modal-open');
+		$('.modal-backdrop').remove();
+	});
+</script>

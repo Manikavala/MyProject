@@ -1,0 +1,32 @@
+<div id="formControllerDiv" data-ng-controller="adminLoginController">
+<img class="img-responsive" src="/andromeda/images/Banner.png" alt="No image found">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://engineering.apssdc.in">APSSDC</a>
+    </div>
+    <ul class="nav navbar-nav" id="navBar">
+      <li class="active"><a onclick="Andromeda.showMainPage()">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" onclick="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a onclick="#">hello !</a></li>
+          <li><a onclick="#">Page 1-2</a></li>
+          <li><a onclick="Andromeda.showFeedbackPage()">Feedback</a></li>
+        </ul>
+      </li>
+      <li><a onclick="Andromeda.showReportPage()">Reports</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a onclick="Andromeda.showLoginPage()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+ <div id="reportDiv"></div>
+</div>
+
+<!-- <script>
+	jQuery(document).ready(function() {
+		angular.bootstrap(jQuery("#adminLoginController"), [ 'adminLogModule' ]);
+		
+	});
+</script> -->

@@ -1,0 +1,74 @@
+<div id="feedbackID" data-ng-controller="feedbackController">
+	<table>
+		<tr>
+			<td><input type="text" placeholder="Enter Name"	id="nameId"	data-ng-model="fb.object.name"></td>
+			<td><input type="text" placeholder="Enter Feedback"
+				data-ng-model="fb.object.feedback"></td>
+			<td><button data-ng-click="feedback(fb.object)">Submit</button></td>
+		</tr>
+	</table>
+	<table id="fbid" border="1">
+		<tr>
+			<td>S.no</td>
+			<td>Name</td>
+			<td>Feedback</td>
+		</tr>
+		<tr data-ng-repeat="x in feedbackData">
+			<td>{{$index + 1}}</td>
+			<td>{{x.name}}</td>
+			<td>{{x.feedback}}</td>
+			<td><button type="button" id="editData"
+					data-ng-click="fbUpdateByName(x)" data-target="#myModal"
+					data-toggle="modal" class="btn btn-success btn-md">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+				<button type="button" class="btn btn-danger" id="removebtn"
+					data-ng-click="fbDelete(x.name)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button></td>
+		</tr>
+	</table>
+
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-ng-click="fb.object=''"
+						data-dismiss="modal">&times;</button>
+					<h4 class="modal-title" style="margin-left: 370px;">Feedback
+						Form</h4>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-success">
+						<div class="panel-body">
+							<form>
+								<br> <label class="control-label col-md-2">Name:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control"
+										 data-ng-model="data.object.name">
+								</div>
+								<label class="control-label col-md-2">Feedback:</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control"
+										data-ng-model="data.object.feedback">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="update" class="btn btn-primary"
+						data-ng-click="fbUpdate(data.object)" data-dismiss="modal"
+						style="width: 100px">Update</button>
+					<button type="button" class="btn btn-warning"
+						style="margin-right: 70px; width: 100px" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	jQuery(document).ready(function() {
+		angular.bootstrap(jQuery("#feedbackID"), [ 'feedbackModule' ]);
+	});
+</script>

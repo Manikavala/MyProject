@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Andromeda Framework">
+<meta name="author" content="PMDC">
+<link href="css/lib/bootstrap.min.css" rel="stylesheet">
+<link href="css/lib/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/lib/sticky-footer-navbar.css" rel="stylesheet">
+<link href="/andromeda/css/general/andromeda.css" rel="stylesheet">
+<link href="scripts/lib/angular-ui.min.css" rel="stylesheet">
+  
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="css/general/navbar.css">
+
+<!-- Core JavaScript Libraries -->
+<script src="/andromeda/scripts/lib/jquery-2.1.1.js"></script>
+<script src="/andromeda/scripts/lib/bootstrap.min.js"></script>
+<script src="/andromeda/scripts/lib/angular/angular.js"></script>
+<script src="/andromeda/scripts/lib/FileSaver.js"></script>
+<script src="scripts/lib/excel.js"></script>
+<script src="scripts/lib/angular-ui.min.js"></script>
+
+
+<!-- Custom scripts for this template -->
+
+<script src="scripts/common/Andromeda.js"></script>
+<script src="scripts/common/login.js"></script>
+<script src="scripts/common/registration.js"></script>
+<script src="scripts/common/report.js"></script>
+<script src="scripts/common/feedback.js"></script>
+
+</head>
+<body>
+<div id="loginChange">
+<div style="background-image:url('images/bg.jpg'); background-repeat: no-repeat;
+    background-attachment: fixed;" >
+    
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://engineering.apssdc.in">APSSDC</a>
+    </div>
+    <ul class="nav navbar-nav" id="navBar">
+      <!-- <li class="active"><a onclick="Andromeda.showMainPage()">Home</a></li> -->
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" onclick="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a onclick="#">Page 1-1</a></li>
+          <li><a onclick="#">Page 1-2</a></li>
+          <li><a onclick="Andromeda.showFeedbackPage()">Feedback</a></li>
+        </ul>
+      </li>
+      <li><a onclick="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="sign">
+      <li><a onclick="Andromeda.showRegPage()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a onclick="Andromeda.showLoginPage()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+<div  id="indexdiv" >
+<!-- <script>
+ 	 jQuery(document).ready(function() {
+		//angular.bootstrap(jQuery("#logindiv"), [ 'loginModule' ]);
+	//	Andromeda.showMainPage();	
+ 		$("#navBar").hide();
+  
+		/* if (Andromeda.isUserLoggedIn()==1)
+		{
+			Andromeda.showLoginPage();
+		}
+		else
+		{
+			Andromeda.showMainPage();
+		}  */
+	});
+</script>  -->
+</div> 
+</div>
+</div>
+</body>
+</html>

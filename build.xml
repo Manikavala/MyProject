@@ -1,0 +1,24 @@
+<!DOCTYPE XML>
+<project name="Apssdc" default="war" basedir=".">
+    <description>Application build file</description>
+
+	<target name="war">
+        <mkdir dir="dist" />
+        
+        <war destfile="dist/myproject.war" webxml="web/WEB-INF/web.xml" >
+            <fileset dir="web" />
+            <classes dir="web/WEB-INF/classes" />
+        </war>
+        
+        <copy todir="/Library/Tomcat/webapps" flatten="true">
+        	
+            <resources>
+                <file file="dist/myproject.war" />
+            </resources>
+        </copy>
+    </target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${dist}" />
+	</target>
+</project>

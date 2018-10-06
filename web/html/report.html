@@ -1,0 +1,62 @@
+<style>
+table, th, td {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+table tr:nth-child(odd) {
+	background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+table {
+	aline: center;
+}
+</style>
+<head>
+<title>My Project</title>
+</head>
+<body>
+	<script src="scripts/lib/angular-ui.min.js"></script>
+
+	<div class="reportcls" id="reportid"
+		data-ng-controller="reportcotroller">
+		<button onClick="exportData('exportId')">Export</button>
+		<table id="exportId">
+			<tr>
+				<td>S.no</td>
+				<td>id</td>
+				<td>attendee id</td>
+				<td>login time</td>
+				<td>out time</td>
+				<td>log user</td>
+			</tr>
+			<tr>
+				
+				<th></th>
+				<th><input type="text" data-ng-model="search.id"></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th><select data-ng-model="search" data-ng-options="x.logUser for x in tableData | unique:'logUser'"></select></th>
+			</tr>
+			<tr data-ng-repeat="xr in tableData | filter:search">
+				<td>{{$index + 1}}</td>
+				<td>{{xr.id}}</td>
+				<td>{{xr.attendeeId}}</td>
+				<td>{{xr.logtime}}</td>
+				<td>{{xr.outime}}</td>
+				<td>{{xr.logUser}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<script>
+		jQuery(document).ready(function() {
+			angular.bootstrap(jQuery("#reportid"), [ 'reportModule' ]);
+		});
+	</script>

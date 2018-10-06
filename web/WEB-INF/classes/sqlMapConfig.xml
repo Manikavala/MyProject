@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<!-- Here alias name is represents return type from mybatis file -->
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="LoginModel" type="myproject.data.model.LoginModel" />
+		<typeAlias alias="RegisterModel" type="myproject.data.model.RegisterModel" />
+		<typeAlias alias="ReportModel" type="myproject.data.model.ReportModel" />
+		<typeAlias alias="FeedbackModel" type="myproject.data.model.FeedbackModel" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="myproject/data/orm/Login-MyBatis.xml" />
+		<mapper resource="myproject/data/orm/Reg-MyBatis.xml" />
+		<mapper resource="myproject/data/orm/Report-MyBatis.xml" />
+		<mapper resource="myproject/data/orm/Feedback-MyBatis.xml" />
+	</mappers>
+</configuration>
