@@ -11,13 +11,12 @@
         </war>
         
         <copy todir="/Library/Tomcat/webapps" flatten="true">
-        	
+       
             <resources>
                 <file file="dist/myproject.war" />
             </resources>
         </copy>
     </target>
-
 	<target name="clean" description="clean up">
 		<delete dir="${dist}" />
 	</target>
